@@ -44,13 +44,24 @@ app.post('/api/generate', async (req, res) => {
   res.status(status).json(data)
 })
 
-const server = app.listen(PORT, () => {
+const distPath = join(__dirname, '..', 'dist')
+if (existsSync(distPath)) {
+  app.use(express.static(distPath))
+  app.get(/^(?!\/api).*/, (req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD') return next()
+    res.sendFile(join(distPath, 'index.html'), (err) => {
+      if (err) next(err)
+    })
+  })
+  console.log(`[api] 已掛載前端靜態檔：${distPath}`)
+}
+
+const server = app.listen(PORT, '0.0.0.0', () => {
   const key = process.env.DEEPSEEK_API_KEY?.trim() || ''
-  console.log(`[api] http://localhost:${PORT}`)
+  console.log(`[api] http://0.0.0.0:${PORT}`)
   if (!key) {
     console.warn('[api] 尚未讀到 DEEPSEEK_API_KEY')
-    console.warn('[api] 請確認 web/.env 有一行：DEEPSEEK_API_KEY=sk-你的金鑰')
-    console.warn('[api] 改完 .env 後必須重開 npm run dev')
+    console.warn('[api] 請在 Zeabur／本機設定環境變數 DEEPSEEK_API_KEY')
   } else {
     console.log(`[api] DEEPSEEK_API_KEY 已載入（長度 ${key.length}）`)
   }
