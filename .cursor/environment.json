@@ -1,0 +1,9 @@
+{
+  "install": "cd web && npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "cd web && npm run dev"
+    }
+  ]
+}

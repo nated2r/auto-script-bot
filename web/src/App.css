@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+TC:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --ink: #14201b;
+  --muted: #5c6b63;
+  --paper: #eef3ef;
+  --panel: #f7faf7;
+  --line: #c5d2c9;
+  --accent: #0f6b5c;
+  --accent-2: #c45c26;
+  --warn-bg: #fff4e5;
+  --err-bg: #fdeceb;
+  --shadow: 0 18px 50px rgba(20, 32, 27, 0.08);
+  --radius: 14px;
+  font-family: 'IBM Plex Sans TC', 'Noto Sans TC', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(15, 107, 92, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(196, 92, 38, 0.1), transparent 50%),
+    linear-gradient(180deg, #e8efe9 0%, var(--paper) 40%, #e4ebe5 100%);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.brand-mark {
+  margin: 0;
+  font-family: Syne, 'IBM Plex Sans TC', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.brand-sub {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.tab.on {
+  background: var(--ink);
+  color: #f4f7f5;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.35rem 1.35rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.muted {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.field > span {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.field.inline {
+  max-width: 280px;
+}
+
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  background: #fff;
+  color: var(--ink);
+  resize: vertical;
+}
+
+textarea:focus,
+select:focus {
+  outline: 2px solid rgba(15, 107, 92, 0.35);
+  border-color: var(--accent);
+}
+
+textarea:disabled {
+  opacity: 0.55;
+  background: #eef1ef;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row.gap {
+  gap: 0.65rem;
+}
+
+.row.between {
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.6rem 1.15rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #f5fffb;
+}
+
+.btn.ghost {
+  background: transparent;
+}
+
+.seg {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.seg-item {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.65rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.seg-item.on {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(15, 107, 92, 0.08);
+}
+
+.banner {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.banner.warn {
+  background: var(--warn-bg);
+}
+
+.banner.err {
+  background: var(--err-bg);
+}
+
+.banner p {
+  margin: 0 0 0.5rem;
+}
+
+.output {
+  margin-top: 1.35rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+}
+
+.output h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.code-out {
+  margin: 0.75rem 0 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #101815;
+  color: #d7ebe2;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  max-height: 28rem;
+}
+
+.code-out.dim {
+  opacity: 0.85;
+  max-height: 16rem;
+}
+
+.raw-details {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+.field-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.field-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 0.75rem 0.9rem;
+}
+
+.field-card h4 {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.field-body {
+  margin: 0.55rem 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  font-family: inherit;
+  color: var(--ink);
+}
+
+.btn.tiny {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+.toast {
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(15, 107, 92, 0.1);
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.hint {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.custom-block {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--line);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 1.25rem 0.9rem 2rem;
+  }
+
+  .panel {
+    padding: 1.1rem;
+  }
+}
